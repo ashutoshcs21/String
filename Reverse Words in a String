@@ -1,0 +1,26 @@
+class Solution {
+    public String reverseWords(String s) {
+        s = s.trim();
+        String val = s.replaceAll("\\s+", " ");
+     int start=0,end=0;
+        char[] str=val.toCharArray();
+        for(end=0;end<val.length();end++){
+            if(str[end]==' '){
+                reverse(str,start,end-1);
+                start=end+1;
+            }
+        }
+        reverse(str,start,end-1);
+        reverse(str,0,str.length-1);
+        return new String(str);
+        }
+        void reverse(char[] str,int low,int high){
+            while(low<high){
+                char store=str[low];
+                str[low]=str[high];
+                str[high]=store;
+                low++;
+                high--;
+            }
+    }
+}
